@@ -1,8 +1,18 @@
 {
   "name": "Agentic QA Copilot",
-  "image": "mcr.microsoft.com/devcontainers/java:17",
+  "image": "mcr.microsoft.com/devcontainers/java:0-17",  // 👈 Java 17 base image
   "features": {
-    "docker-in-docker": "true"
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}  // Optional: needed if running Selenium containers
   },
-  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y allure"
+  "postCreateCommand": "java -version && echo '[✔] Java setup successful'",
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "vscjava.vscode-java-pack",
+        "github.copilot",
+        "github.copilot-chat"
+      ]
+    }
+  }
 }
